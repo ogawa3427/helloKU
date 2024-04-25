@@ -36,4 +36,4 @@ def synthesize_speech(text):
     os.remove("output.wav")  # 音声ファイルを削除
 
 # 使用例
-synthesize_speech("こんにちは。")
+#synthesize_speech("こんにちは。")
