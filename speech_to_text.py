@@ -9,6 +9,7 @@ model = whisper.load_model("medium")
 def process_audio(data, model):
     # バイトデータをNumPy配列に変換
     data = np.frombuffer(data, dtype=np.int16)
+    data.setflags(write=1)
     # 音声データをテキストに変換
     result = model.transcribe(data)
     transcription = result["text"]
