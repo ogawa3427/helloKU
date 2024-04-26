@@ -1,11 +1,14 @@
 import soundcard as sc
 import whisper
 import threading
+import numpy as np
 
 # Whisperモデルのロード
 model = whisper.load_model("medium")
 
 def process_audio(data, model):
+    # バイトデータをNumPy配列に変換
+    data = np.frombuffer(data, dtype=np.int16)
     # 音声データをテキストに変換
     result = model.transcribe(data)
     transcription = result["text"]
