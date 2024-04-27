@@ -27,7 +27,7 @@ def whisper_main():
         while True:
             audio = q.get()
             print('キューから音声データを取得')  # デバッグ情報
-            if (audio ** 2).max() > 0.001:
+            if (audio ** 2).max() > 0.00001:
                 print('音声データが閾値を超えました')  # デバッグ情報
                 audio = whisper.pad_or_trim(audio)
                 mel = whisper.log_mel_spectrogram(audio).to(model.device)
