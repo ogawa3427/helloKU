@@ -1,20 +1,36 @@
 import soundcard as sc
 import numpy as np
+import tempfile
+import os
 
-# サンプリング設定
-samplerate = 48000
-frames = 1024
+# 定数の設定
+SAMPLE_RATE = 16000  # サンプルレート
+DURATION = 3  # 録音時間（秒）
+BUFFER_SIZE = 1024  # バッファサイズ
 
-# マイクの設定
+# デフォルトのマイクとスピーカーを取得
 default_mic = sc.default_microphone()
+default_speaker = sc.default_speaker()
 
-def monitor_audio():
-    while True:
-        data = default_mic.record(frames, samplerate)
-        data = data.mean(axis=1)  # ステレオをモノラルに変換
-        volume = np.linalg.norm(data)  # ボリュームを計算
-        volume_bar = '#' * int(volume * 100)  # ボリュームレベルに基づいたバーを生成
-        print(f'\r{volume_bar}', end='')  # リアルタイムで表示更新
+while True:
+    # 一時ファイルの作成
+    temp_file = tempfile.NamedTemporaryFile(delete=False)
+    file_path = temp_file.name
 
-if __name__ == '__main__':
-    monitor_audio()
+    # 録音開始
+    print("録音を開始します...")
+    with default_mic.recorder(samplerate=SAMPLE_RATE) as mic, temp_file as f:
+        for _ in range(int(SAMPLE_RATE / BUFFER_SIZE * DURATION)):
+            data = mic.record(numframes=BUFFER_SIZE)
+            f.write(data.tobytes())
+
+    # 録音データの再生
+    print("録音データを再生します...")
+    with default_speaker.player(samplerate=SAMPLE_RATE) as sp:
+        sp.play(data)
+
+    # 一時ファイルの削除
+    print("一時ファイルを削除します...")
+    os.remove(file_path)
+
+    # ループの終了条件や待機処理をここに追加することができます（例：time.sleep(1)）
