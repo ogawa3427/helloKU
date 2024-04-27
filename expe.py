@@ -4,11 +4,14 @@ import numpy as np
 import soundfile as sf
 import speech_recognition as sr
 
+prev_text = ""
+
 import whisper
 model = whisper.load_model("base")
 r = sr.Recognizer()
 while True:
     with sr.Microphone(sample_rate=16_000) as source:
+        print(prev_text)
         print("なにか話してください")
         audio = r.listen(source)
 
@@ -20,3 +23,4 @@ while True:
 
         result = model.transcribe(audio_fp32, fp16=False)
         print(result["text"])
+        prev_text = result["text"]
