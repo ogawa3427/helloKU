@@ -4,6 +4,8 @@ import numpy as np
 import soundfile as sf
 import speech_recognition as sr
 
+import whisper
+model = whisper.load_model("base")
 r = sr.Recognizer()
 with sr.Microphone(sample_rate=16_000) as source:
     print("なにか話してください")
