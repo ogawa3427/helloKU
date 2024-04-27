@@ -26,12 +26,16 @@ def whisper_main():
     def recognize():
         while True:
             audio = q.get()
+            print('キューから音声データを取得')  # デバッグ情報
             if (audio ** 2).max() > 0.001:
+                print('音声データが閾値を超えました')  # デバッグ情報
                 audio = whisper.pad_or_trim(audio)
                 mel = whisper.log_mel_spectrogram(audio).to(model.device)
                 _, probs = model.detect_language(mel)
                 result = whisper.decode(model, mel, options)
                 print(f'{max(probs, key=probs.get)}: {result.text}')
+            else:
+                print('音声データが閾値未満です')  # デバッグ情報
 
     th_recognize = threading.Thread(target=recognize, daemon=True)
     th_recognize.start()
@@ -44,11 +48,13 @@ def whisper_main():
                 data = mic.record(BUFFER_SIZE)
                 audio[n:n+len(data)] = data.reshape(-1)
                 n += len(data)
+            print('音声データを録音中...')  # デバッグ情報
 
             m = n * 4 // 5
             vol = np.convolve(audio[m:n] ** 2, b, 'same')
             m += vol.argmin()
             q.put(audio[:m])
+            print('音声データをキューに追加')  # デバッグ情報
 
             audio_prev = audio
             audio = np.empty(SAMPLE_RATE * INTERVAL + BUFFER_SIZE, dtype=np.float32)
