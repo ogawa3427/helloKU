@@ -18,12 +18,34 @@ import requests
 
 prev_text = ""
 
+import pyaudio
+
+def play_audio(file_path):
+    # 音声ファイルを読み込む
+    data, samplerate = sf.read(file_path)
+    
+    # PyAudioの設定
+    p = pyaudio.PyAudio()
+    stream = p.open(format=pyaudio.paFloat32,
+                    channels=1,
+                    rate=samplerate,
+                    output=True)
+    
+    # 音声の再生
+    stream.write(data.tobytes())
+    
+    # ストリームを閉じる
+    stream.stop_stream()
+    stream.close()
+    p.terminate()
+
+play_audio("1.wav")
 
 import whisper
 model = whisper.load_model("base")
 r = sr.Recognizer()
-while True:
-    with sr.Microphone(sample_rate=16_000) as source:
+with sr.Microphone(sample_rate=16_000) as source:
+    while True:
         print(prev_text)
         print("なにか話してください")
         audio = r.listen(source)
@@ -50,6 +72,7 @@ while True:
         answer = response.choices[0].message.content
         if not any(char in answer for char in "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん"):
             tts.synthesize_speech("もう一度")
+            print(answer)
             continue
         print(answer)
         tts.synthesize_speech(answer)
