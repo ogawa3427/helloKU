@@ -6,14 +6,11 @@ from io import BytesIO
 
 import numpy as np
 import soundfile as sf
-import speech_recognition as sr
 
 import openai
 import json
 import os
-from openai import OpenAI
-aiclient = OpenAI()
-openai.api_key = os.getenv('OPENAI_API_KEY')
+
 import requests
 
 prev_text = ""
@@ -39,7 +36,13 @@ def play_audio(file_path):
     stream.close()
     p.terminate()
 
-play_audio("1.wav")
+#play_audio("1.wav")
+import speech_recognition as sr
+
+from openai import OpenAI
+aiclient = OpenAI()
+openai.api_key = os.getenv('OPENAI_API_KEY')
+
 
 import whisper
 model = whisper.load_model("base")
