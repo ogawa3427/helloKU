@@ -50,7 +50,7 @@ r = sr.Recognizer()
 with sr.Microphone(sample_rate=16_000) as source:
     while True:
         print(prev_text)
-        print("なにか話してください")
+        print("😍😍😍なにか話してください")
         try:
             # 15秒でタイムアウトするように設定
             audio = r.listen(source, timeout=15, phrase_time_limit=15)
@@ -65,6 +65,7 @@ with sr.Microphone(sample_rate=16_000) as source:
         audio_fp32 = audio_array.astype(np.float32)
 
         result = model.transcribe(audio_fp32, fp16=False)
+        print("🥺🥺🥺")
         print(result["text"])
         if result["text"] == "":
             tts.synthesize_speech("もう一度")
@@ -82,5 +83,6 @@ with sr.Microphone(sample_rate=16_000) as source:
             tts.synthesize_speech("もう一度")
             print(answer)
             continue
+        print("☎️☎️☎️AI")
         print(answer)
         tts.synthesize_speech(answer)
