@@ -6,14 +6,20 @@ sudo apt install portaudio19-dev -y
 # Python構築
 sudo apt install python3-pip -y #要確認
 pip install --upgrade pip
+sudo echo
 pip install -r requirements.txt
+sudo echo
 pip install json
 pip install whisper-openai
+sudo echo
 pip install whisper-mic
+sudo echo
 pip install threading
 pip install Requests
+sudo echo
 pip install soundcard
 pip install soundfile
+sudo echo
 pip install SpeechRecognition
 
 #pulseaudio
