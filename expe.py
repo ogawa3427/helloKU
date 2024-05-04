@@ -21,6 +21,6 @@ while True:
         audio_array, sampling_rate = sf.read(wav_stream)
         audio_fp32 = audio_array.astype(np.float32)
 
-        result = model.transcribe(audio_fp32, fp16=False)
+        result = model.transcribe(audio_fp32, fp16=False, language="ja")
         print(result["text"])
         prev_text = result["text"]

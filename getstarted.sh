@@ -10,6 +10,7 @@ pip install requests
 pip install json
 pip install pygame
 pip install whisper-openai
+pip install whisper-mic
 pip install threading
 pip install soundcard
 pip install soundfile
