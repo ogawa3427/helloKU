@@ -85,4 +85,6 @@ with sr.Microphone(sample_rate=16_000) as source:
             continue
         print("☎️☎️☎️AI")
         print(answer)
+        source.MUTE = True
         tts.synthesize_speech(answer)
+        source.MUTE = False
