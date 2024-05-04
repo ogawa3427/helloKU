@@ -44,5 +44,6 @@ while True:
             messages=[{"role": "system", "content": "You are a helpful assistant."}, 
                     {"role": "user", "content": prompt}]
         )
-        print(response.choices[0].text)
-        tts.synthesize_speech(response.choices[0].text)
+        answer = response.choices[0].message.content
+        print(answer)
+        tts.synthesize_speech(answer)
