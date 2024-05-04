@@ -1,7 +1,7 @@
 # おやくそく
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install portaudio19-dev
+sudo apt install portaudio19-dev -y
 
 # Python構築
 sudo apt install python3-pip -y #要確認
