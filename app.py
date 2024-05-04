@@ -18,6 +18,7 @@ import requests
 
 prev_text = ""
 
+
 import whisper
 model = whisper.load_model("base")
 r = sr.Recognizer()
@@ -38,10 +39,10 @@ while True:
         prev_text = result["text"]
 
         prompt = result["text"]
-        response = openai.Completion.create(
-            engine="gpt-3.5-turbo",
-            prompt=prompt,
-            max_tokens=300
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "system", "content": "You are a helpful assistant."}, 
+                    {"role": "user", "content": prompt}]
         )
         print(response.choices[0].text)
         tts.synthesize_speech(response.choices[0].text)

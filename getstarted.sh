@@ -41,6 +41,7 @@ sudo apt install libpangoxft-1.0-dev -y
 # Python構築
 sudo apt install python3-pip -y #要確認
 pip install --upgrade pip
+pip install openai
 sudo echo
 pip install -r requirements.txt
 sudo echo
