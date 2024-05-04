@@ -51,7 +51,12 @@ with sr.Microphone(sample_rate=16_000) as source:
     while True:
         print(prev_text)
         print("なにか話してください")
-        audio = r.listen(source)
+        try:
+            # 15秒でタイムアウトするように設定
+            audio = r.listen(source, timeout=15, phrase_time_limit=15)
+        except sr.WaitTimeoutError:
+            print("タイムアウト")
+            continue
 
         print("音声処理中 ...")
         wav_bytes = audio.get_wav_data()
