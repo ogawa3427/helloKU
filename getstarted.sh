@@ -15,6 +15,15 @@ pip install Requests
 pip install soundcard
 pip install soundfile
 pip install SpeechRecognition
+
+#pulseaudio
+sudo apt install pulseaudio-utils
+echo >> ~/.bashrc
+echo "export __BASEIP=192" >> ~/.bashrc
+echo "export __XSERVERHOST=NANOKO" >> ~/.bashrc
+echo "export PULSE_SERVER=tcp:$(nslookup $__XSERVERHOST | grep " $__BASEIP" | awk '{print $2}');" >> ~/.bashrc
+source ~/.bashrc
+
 # ボイボ
 #curl https://github.com/VOICEVOX/voicevox/releases/download/0.19.1/voicevox-linux-cpu-0.19.1.tar.gz
 #tar -xvf voicevox-linux-cpu-0.19.1.tar.gz
