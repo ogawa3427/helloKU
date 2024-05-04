@@ -17,7 +17,8 @@ pip install soundfile
 pip install SpeechRecognition
 
 #pulseaudio
-sudo apt install pulseaudio-utils
+sudo apt install pulseaudio-utils -y
+sudo apt install pulseaudio -y
 echo >> ~/.bashrc
 echo "export __BASEIP=192" >> ~/.bashrc
 echo "export __XSERVERHOST=NANOKO" >> ~/.bashrc
