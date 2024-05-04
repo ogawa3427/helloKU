@@ -49,7 +49,6 @@ model = whisper.load_model("base")
 r = sr.Recognizer()
 with sr.Microphone(sample_rate=16_000) as source:
     while True:
-        print(prev_text)
         print("😍😍😍なにか話してください")
         try:
             # 15秒でタイムアウトするように設定
@@ -88,3 +87,5 @@ with sr.Microphone(sample_rate=16_000) as source:
         source.MUTE = True
         tts.synthesize_speech(answer)
         source.MUTE = False
+        print("🪮🛡️🛡️🛡️BACK")
+

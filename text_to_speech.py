@@ -31,8 +31,11 @@ def synthesize_speech(text):
     pygame.mixer.init()
     pygame.mixer.music.load("output.wav")
     pygame.mixer.music.play()
+    a = 0
     while pygame.mixer.music.get_busy():  # 再生が終了するまで待機
-        pygame.time.Clock().tick(10)
+        pygame.time.Clock().tick(100)
+        print(a)
+        a += 1
 
     os.remove("output.wav")  # 音声ファイルを削除
 
