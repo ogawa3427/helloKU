@@ -2,6 +2,7 @@ import requests
 import json
 import pygame  # playsoundの代わりにpygameをインポート
 import os
+import time
 
 # 環境変数からVOICEVOXのエンドポイントとスピーカーIDを取得
 VOICEVOX_ENDPOINT = "http://localhost:50021"
@@ -33,7 +34,7 @@ def synthesize_speech(text):
     pygame.mixer.music.play()
     a = 0
     while pygame.mixer.music.get_busy():  # 再生が終了するまで待機
-        pygame.time.Clock().tick(100)
+        time.sleep(0.5)
         print(a)
         a += 1
 
