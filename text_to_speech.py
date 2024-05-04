@@ -5,7 +5,7 @@ import os
 
 # 環境変数からVOICEVOXのエンドポイントとスピーカーIDを取得
 VOICEVOX_ENDPOINT = "http://localhost:50021"
-VOICEVOX_SPEAKER = "1"
+VOICEVOX_SPEAKER = "2"
 
 def synthesize_speech(text):
     # クエリ作成
@@ -14,6 +14,7 @@ def synthesize_speech(text):
         headers={'Content-Type': 'application/json'}
     )
     audio_query_json = audio_query_response.json()
+    audio_query_json["speedScale"] = 1.3
 
     # 音声合成
     synthesis_response = requests.post(
