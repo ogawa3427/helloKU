@@ -24,10 +24,10 @@ def play_audio(file_path):
     # 音声ファイルを読み込む
     data, samplerate = sf.read(file_path)
     
-    # PyAudioの設定
+    # PyAudioの設定をステレオと16ビット整数形式に変更
     p = pyaudio.PyAudio()
-    stream = p.open(format=pyaudio.paFloat32,
-                    channels=1,
+    stream = p.open(format=pyaudio.paInt16,
+                    channels=2,
                     rate=samplerate,
                     output=True)
     
