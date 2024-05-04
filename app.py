@@ -36,6 +36,9 @@ while True:
 
         result = model.transcribe(audio_fp32, fp16=False)
         print(result["text"])
+        if result["text"] == "":
+            tts.synthesize_speech("もう一度")
+            continue 
         prev_text = result["text"]
 
         prompt = result["text"]
@@ -45,5 +48,8 @@ while True:
                     {"role": "user", "content": prompt}]
         )
         answer = response.choices[0].message.content
+        if not any(char in answer for char in "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん"):
+            tts.synthesize_speech("もう一度")
+            continue
         print(answer)
         tts.synthesize_speech(answer)
