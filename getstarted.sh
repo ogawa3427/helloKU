@@ -20,9 +20,7 @@ pip install SpeechRecognition
 sudo apt install pulseaudio-utils -y
 sudo apt install pulseaudio -y
 echo >> ~/.bashrc
-echo "export __BASEIP=192" >> ~/.bashrc
-echo "export __XSERVERHOST=NANOKO" >> ~/.bashrc
-echo "export PULSE_SERVER=tcp:$(nslookup $__XSERVERHOST | grep " $__BASEIP" | awk '{print $2}');" >> ~/.bashrc
+echo "export PULSE_SERVER=tcp:$(grep nameserver /etc/resolv.conf | awk '{print $2}');" >> ~/.bashrc
 source ~/.bashrc
 
 # ボイボ
