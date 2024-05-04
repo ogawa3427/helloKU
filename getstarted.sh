@@ -66,5 +66,6 @@ echo "export PULSE_SERVER=tcp:$(grep nameserver /etc/resolv.conf | awk '{print $
 source ~/.bashrc
 
 # ボイボ
-curl -L https://github.com/VOICEVOX/voicevox/releases/download/0.19.1/voicevox-linux-cpu-0.19.1.tar.gz --progress-bar -o voicevox-linux-cpu-0.19.1.tar.gz
-#tar -xvf voicevox-linux-cpu-0.19.1.tar.gz
+curl -L https://voicevox.hiroshiba.jp/static/6db92c59113a78838cf5e2bceb5e99ff/linuxInstallCpu.sh --progress-bar -o voicevox_install.sh
+chmod +x voicevox_install.sh
+./voicevox_install.sh
