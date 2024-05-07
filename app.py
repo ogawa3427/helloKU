@@ -10,6 +10,7 @@ import soundfile as sf
 import openai
 import json
 import os
+import time
 
 import requests
 
@@ -83,4 +84,5 @@ with sr.Microphone(sample_rate=16_000) as source:
         tts.synthesize_speech(answer)
         source.MUTE = False
         print("🪮🛡️🛡️🛡️BACK")
+        time.sleep(1)
 

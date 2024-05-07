@@ -15,5 +15,3 @@ while True:
     print("4")
     time.sleep(1)
     print("5")
-
-
