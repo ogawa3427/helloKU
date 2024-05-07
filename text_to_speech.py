@@ -37,6 +37,8 @@ def synthesize_speech(text):
         time.sleep(0.5)
         print(a)
         a += 1
+    time.sleep(1)
+    print("音声再生が終了しました。")
 
     os.remove("output.wav")  # 音声ファイルを削除
 
