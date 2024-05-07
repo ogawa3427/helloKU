@@ -69,7 +69,7 @@ with sr.Microphone(sample_rate=16_000) as source:
         prompt = result["text"]
         response = aiclient.chat.completions.create(
             model="gpt-3.5-turbo",
-            messages=[{"role": "system", "content": "You are a helpful assistant."}, 
+            messages=[{"role": "system", "content": "あなたは対話形式で会話するキャラクターです。他人行儀な話し方はしないでください。入力は音声認識を経由しているため安定しないことがあります、そのため多少は想像して答えて構いません。また返答は日本語にしてください。"},
                     {"role": "user", "content": prompt}]
         )
         answer = response.choices[0].message.content
