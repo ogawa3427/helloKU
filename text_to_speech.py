@@ -15,7 +15,7 @@ def synthesize_speech(text):
         headers={'Content-Type': 'application/json'}
     )
     audio_query_json = audio_query_response.json()
-    audio_query_json["speedScale"] = 1.3
+    audio_query_json["speedScale"] = 1.1
 
     # 音声合成
     synthesis_response = requests.post(
