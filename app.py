@@ -52,6 +52,7 @@ with sr.Microphone(sample_rate=16_000) as source:
     while True:
         print("😍😍😍なにか話してください")
         time.sleep(1)
+        print("😍😍😍なにか話してください22222")
         audio = r.listen(source, timeout=15)
 
         print("音声処理中 ...")
