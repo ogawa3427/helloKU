@@ -4,5 +4,6 @@ echo 'export DISPLAY=$(grep nameserver /etc/resolv.conf | awk '\''{print $2}'\''
 source ~/.bashrc
 
 touch ~/.Xauthority
-xauth generate ${DISPLAY}0 . trusted
+DISPLAY=$DISPLAY
+xauth generate $DISPLAY . trusted
 
