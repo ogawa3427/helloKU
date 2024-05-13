@@ -35,7 +35,7 @@ class CyclicValueReader:
     def get_next_value(self):
         value = self.values[self.index]
         self.index = (self.index + 1) % len(self.values)
-        return value
+        return value/100
 
 # リストの内容を順繰りに返すインスタンスを作成
 cyclic_reader = CyclicValueReader(hash_list)
@@ -46,7 +46,7 @@ def mouse_position():
 
 pyautogui.FAILSAFE = False
 
-pyautogui.moveTo(36, 908, duration=cyclic_reader.get_next_value())
+pyautogui.moveTo(36, 906, duration=cyclic_reader.get_next_value())
 mouse_position()
 pyautogui.click()
 
