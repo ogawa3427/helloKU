@@ -51,7 +51,8 @@ mouse_position()
 pyautogui.click(40, 919)
 
 print("OpenComment")
-
+time.sleep(cyclic_reader.get_next_value())
+time.sleep(1)
 pyautogui.click(125, 907)
 time.sleep(1)
 time.sleep(cyclic_reader.get_next_value())
