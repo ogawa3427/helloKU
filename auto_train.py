@@ -1,12 +1,23 @@
 import pyautogui
 import time
-pyautogui.FAILSAFE = True
+
+def mouse_position():
+    print("マウス")
+    print(pyautogui.position())
+
+pyautogui.FAILSAFE = False
+
+mouse_position()
+pyautogui.moveTo(100, 100, duration=1)
+mouse_position()
 # 画面の解像度を取得
 screenWidth, screenHeight = pyautogui.size()
 print(screenWidth)
 print(screenHeight)
+mouse_position()
 # マウスを画面中央に移動
 pyautogui.moveTo(screenWidth / 2, screenHeight / 2, 2)
+mouse_position()
 
 # マウスを左クリック
 pyautogui.click()
