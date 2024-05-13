@@ -7,6 +7,10 @@ def mouse_position():
 
 pyautogui.FAILSAFE = False
 
+while True:
+    mouse_position()
+    time.sleep(0.1)
+
 mouse_position()
 pyautogui.moveTo(100, 100, duration=1)
 mouse_position()
