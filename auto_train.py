@@ -69,47 +69,55 @@ def open_menu():
 
 pyautogui.FAILSAFE = False
 
-
-pyautogui.moveTo(40, 919, duration=cyclic_reader.get_next_value())
-mouse_position()
-pyautogui.click(40, 919)
-
-
-print("OpenComment")
-time.sleep(cyclic_reader.get_next_value())
-time.sleep(1)
-pyautogui.click(125, 907)
-time.sleep(1)
-time.sleep(cyclic_reader.get_next_value())
-pyautogui.write("Hello", interval=cyclic_reader.get_next_value())
-print("WriteComment")
-time.sleep(cyclic_reader.get_next_value())
-pyautogui.press('enter')
-print("EnterComment")
+if False:
+    pyautogui.moveTo(40, 919, duration=cyclic_reader.get_next_value())
+    mouse_position()
+    pyautogui.click(40, 919)
 
 
-pyautogui.moveTo(546, 988, duration=cyclic_reader.get_next_value()*10)
-pyautogui.click()
-time.sleep(0.1)
-pyautogui.mouseDown(895,540, duration=cyclic_reader.get_next_value()*10)
-pyautogui.click()
+    print("OpenComment")
+    time.sleep(cyclic_reader.get_next_value())
+    time.sleep(1)
+    pyautogui.click(125, 907)
+    time.sleep(1)
+    time.sleep(cyclic_reader.get_next_value())
+    pyautogui.write("Hello", interval=cyclic_reader.get_next_value())
+    print("WriteComment")
+    time.sleep(cyclic_reader.get_next_value())
+    pyautogui.press('enter')
+    print("EnterComment")
 
 
-print("Shoot!")
+    pyautogui.moveTo(546, 988, duration=cyclic_reader.get_next_value()*10)
+    pyautogui.click()
+    time.sleep(0.1)
+    pyautogui.mouseDown(895,540, duration=cyclic_reader.get_next_value()*10)
+    pyautogui.click()
 
 
-pyautogui.moveTo(470, 676, duration=cyclic_reader.get_next_value()*10)
-pyautogui.click()
+    print("Shoot!")
 
-time.sleep(1)
 
-my_click(912, 67)
-time.sleep(cyclic_reader.get_next_value()*10)
-pyautogui.press('esc')
+    pyautogui.moveTo(470, 676, duration=cyclic_reader.get_next_value()*10)
+    pyautogui.click()
 
-my_click(32, 916)
+    time.sleep(1)
+
+    my_click(912, 67)
+    time.sleep(cyclic_reader.get_next_value()*10)
+    pyautogui.press('esc')
+
+    my_click(32, 916)
 
 open_menu()
+my_click(636, 941)
+my_click(654, 101)
+my_click(758, 627)
+for i in range(10):
+    time.sleep(1)
+    print(i)
+open_menu()
+my_click(877, 934)
 
 exit()
 
