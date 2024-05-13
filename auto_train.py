@@ -139,6 +139,30 @@ my_click(451, 801)
 
 print("Stored")
 
+my_click(178, 435)
+time.sleep(1)
+my_click(825, 896)
+for i in range(3):
+    time.sleep(1)
+    print(i)
+my_click(889, 175)
+time.sleep(cyclic_reader.get_next_value()*10)
+my_click(79, 47)
+time.sleep(cyclic_reader.get_next_value()*10)
+my_click(467, 56)
+time.sleep(cyclic_reader.get_next_value()*10)
+for i in range(3):
+    time.sleep(1)
+    print(i)
+my_click(77, 47)
+time.sleep(cyclic_reader.get_next_value()*10)
+my_click(813, 927)
+time.sleep(cyclic_reader.get_next_value()*10)
+my_click(582, 937)
+time.sleep(cyclic_reader.get_next_value()*10)
+my_click(19, 52)
+time.sleep(cyclic_reader.get_next_value()*10)
+my_click(19, 52)
 
 exit()
 
