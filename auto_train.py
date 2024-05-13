@@ -50,6 +50,10 @@ pyautogui.moveTo(40, 919, duration=cyclic_reader.get_next_value())
 mouse_position()
 pyautogui.click(40, 919)
 
+print("OpenComment")
+
+exit()
+
 pyautogui.keyDown('z')
 time.sleep(2)
 pyautogui.keyUp('z')
