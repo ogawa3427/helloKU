@@ -52,6 +52,8 @@ pyautogui.click(40, 919)
 
 pyautogui.press('z', interval=cyclic_reader.get_next_value())
 
+pyautogui.dragTo(100, 100, duration=cyclic_reader.get_next_value()*100)
+
 print("Finish")
 
 mouse_position()
