@@ -46,7 +46,7 @@ def mouse_position():
 
 pyautogui.FAILSAFE = False
 
-pyautogui.moveTo(36, 946, duration=cyclic_reader.get_next_value())
+pyautogui.moveTo(36, 906, duration=cyclic_reader.get_next_value())
 mouse_position()
 pyautogui.click()
 
