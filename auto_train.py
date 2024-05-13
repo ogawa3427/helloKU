@@ -1,5 +1,44 @@
 import pyautogui
 import time
+import hashlib
+
+from datetime import datetime
+
+# 現在の日時を取得
+current_time = datetime.now()
+
+# 分と秒を取得
+current_minute = current_time.minute
+current_second = current_time.second
+
+# 分と秒を表示
+print(f"現在の分: {current_minute}")
+print(f"現在の秒: {current_second}")
+
+to_hash = str(current_minute) + str(current_second)
+print(to_hash)
+# ハッシュ値を生成
+hash_value = hashlib.md5(to_hash.encode()).hexdigest()
+print(hash_value)
+
+#ハッシュ値を１文字ずつのリストに変換
+hash_list = list(hash_value)
+#各値を整数に変換
+hash_list = [int(x, 16) for x in hash_list]
+print(hash_list)
+
+class CyclicValueReader:
+    def __init__(self, values):
+        self.values = values
+        self.index = 0
+
+    def get_next_value(self):
+        value = self.values[self.index]
+        self.index = (self.index + 1) % len(self.values)
+        return value
+
+# リストの内容を順繰りに返すインスタンスを作成
+cyclic_reader = CyclicValueReader(hash_list)
 
 def mouse_position():
     print("マウス")
@@ -7,9 +46,11 @@ def mouse_position():
 
 pyautogui.FAILSAFE = False
 
-while True:
-    mouse_position()
-    time.sleep(0.1)
+pyautogui.moveTo(36, 908, duration=cyclic_reader.get_next_value())
+mouse_position()
+pyautogui.click()
+
+print("Finish")
 
 mouse_position()
 pyautogui.moveTo(100, 100, duration=1)
