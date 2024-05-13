@@ -48,7 +48,9 @@ pyautogui.FAILSAFE = False
 
 pyautogui.moveTo(40, 919, duration=cyclic_reader.get_next_value())
 mouse_position()
-pyautogui.click()
+pyautogui.click(40, 919)
+
+pyautogui.press('z', interval=cyclic_reader.get_next_value())
 
 print("Finish")
 
