@@ -52,6 +52,12 @@ pyautogui.click(40, 919)
 
 print("OpenComment")
 
+pyautogui.click(125, 907)
+time.sleep(cyclic_reader.get_next_value())
+pyautogui.write("Hello", interval=cyclic_reader.get_next_value())
+pyautogui.press('enter')
+
+
 exit()
 
 pyautogui.keyDown('z')
