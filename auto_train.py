@@ -5,7 +5,8 @@ import hashlib
 
 from datetime import datetime
 
-
+import sys
+args = sys.argv
 # 現在の日時を取得
 current_time = datetime.now()
 
@@ -108,16 +109,36 @@ if False:
     pyautogui.press('esc')
 
     my_click(32, 916)
+if args[1] != "no":
+    open_menu()
+    my_click(636, 941)
+    my_click(654, 101)
+    my_click(758, 627)
+    for i in range(10):
+        time.sleep(1)
+        print(i)
+    open_menu()
+    my_click(877, 934)
+    time.sleep(2)
+    my_click(375, 534)
+
+    time.sleep(cyclic_reader.get_next_value()*10)
+    my_click(917, 57)
+    time.sleep(cyclic_reader.get_next_value()*10)
+    my_click(451, 801)
 
 open_menu()
-my_click(636, 941)
-my_click(654, 101)
-my_click(758, 627)
-for i in range(10):
-    time.sleep(1)
-    print(i)
-open_menu()
-my_click(877, 934)
+my_click(879, 936)
+time.sleep(2)
+my_click(375, 534)
+
+time.sleep(cyclic_reader.get_next_value()*10)
+my_click(917, 57)
+time.sleep(cyclic_reader.get_next_value()*10)
+my_click(451, 801)
+
+print("Stored")
+
 
 exit()
 
