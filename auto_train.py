@@ -97,7 +97,7 @@ pyautogui.click()
 
 print("Shoot!")
 
-time.sleep(1)
+time.sleep(2)
 pyautogui.moveTo(470, 676, duration=cyclic_reader.get_next_value()*10)
 pyautogui.click()
 
