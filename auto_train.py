@@ -2,18 +2,23 @@ import pyautogui
 import time
 import hashlib
 
+
 from datetime import datetime
+
 
 # 現在の日時を取得
 current_time = datetime.now()
+
 
 # 分と秒を取得
 current_minute = current_time.minute
 current_second = current_time.second
 
+
 # 分と秒を表示
 print(f"現在の分: {current_minute}")
 print(f"現在の秒: {current_second}")
+
 
 to_hash = str(current_minute) + str(current_second)
 print(to_hash)
@@ -21,34 +26,47 @@ print(to_hash)
 hash_value = hashlib.md5(to_hash.encode()).hexdigest()
 print(hash_value)
 
+
 #ハッシュ値を１文字ずつのリストに変換
 hash_list = list(hash_value)
 #各値を整数に変換
 hash_list = [int(x, 16) for x in hash_list]
 print(hash_list)
 
+
 class CyclicValueReader:
     def __init__(self, values):
         self.values = values
         self.index = 0
+
 
     def get_next_value(self):
         value = self.values[self.index]
         self.index = (self.index + 1) % len(self.values)
         return value/100
 
+
 # リストの内容を順繰りに返すインスタンスを作成
 cyclic_reader = CyclicValueReader(hash_list)
+
 
 def mouse_position():
     print("マウス")
     print(pyautogui.position())
 
+
+def my_click(position_x, position_y):
+    pyautogui.moveTo(position_x, position_y, duration=cyclic_reader.get_next_value()*10)
+    pyautogui.click()
+    time.sleep(cyclic_reader.get_next_value()*10)
+
 pyautogui.FAILSAFE = False
+
 
 pyautogui.moveTo(40, 919, duration=cyclic_reader.get_next_value())
 mouse_position()
 pyautogui.click(40, 919)
+
 
 print("OpenComment")
 time.sleep(cyclic_reader.get_next_value())
@@ -63,7 +81,26 @@ pyautogui.press('enter')
 print("EnterComment")
 
 
+pyautogui.moveTo(546, 988, duration=cyclic_reader.get_next_value()*10)
+pyautogui.click()
+time.sleep(0.1)
+pyautogui.mouseDown(895,540, duration=cyclic_reader.get_next_value()*10)
+pyautogui.click()
+
+
+print("Shoot!")
+
+
+pyautogui.moveTo(470, 676, duration=cyclic_reader.get_next_value()*10)
+pyautogui.click()
+
+my_click(912, 67)
+
+
+
+
 exit()
+
 
 pyautogui.keyDown('z')
 time.sleep(2)
@@ -71,9 +108,12 @@ pyautogui.keyUp('z')
 print("Scroll")
 pyautogui.vscroll(10)
 
+
 pyautogui.dragTo(100, 100, duration=cyclic_reader.get_next_value()*100)
 
+
 print("Finish")
+
 
 mouse_position()
 pyautogui.moveTo(100, 100, duration=1)
@@ -87,19 +127,24 @@ mouse_position()
 pyautogui.moveTo(screenWidth / 2, screenHeight / 2, 2)
 mouse_position()
 
+
 # マウスを左クリック
 pyautogui.click()
 
+
 # キーボードで "Hello, world!" と入力
 pyautogui.write('Hello, world!', interval=0.25)
+
 
 # スクリーンショットを取り、ファイルに保存
 #screenshot = pyautogui.screenshot()
 #screenshot.save('screenshot.png')
 
+
 import pyautogui
 import time
 from PIL import Image, ImageDraw
+
 
 pyautogui.FAILSAFE = True
 screenWidth, screenHeight = pyautogui.size()
@@ -108,6 +153,7 @@ print(screenHeight)
 pyautogui.moveTo(screenWidth / 2, screenHeight / 2, 2)
 pyautogui.click()
 pyautogui.write('Hello, world!', interval=0.25)
+
 
 # マウスの位置に基づいて画像を生成し表示するループ
 while True:
@@ -119,3 +165,6 @@ while True:
     time.sleep(1)  # 1秒ごとに画像を更新
 # マウスを画面の左上に移動
 pyautogui.moveTo(0, 0, 2)
+
+
+
