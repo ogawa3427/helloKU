@@ -53,6 +53,8 @@ pyautogui.click(40, 919)
 pyautogui.keyDown('z')
 time.sleep(2)
 pyautogui.keyUp('z')
+print("Scroll")
+pyautogui.vscroll(10)
 
 pyautogui.dragTo(100, 100, duration=cyclic_reader.get_next_value()*100)
 
