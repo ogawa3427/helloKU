@@ -56,10 +56,16 @@ def mouse_position():
 
 
 def my_click(position_x, position_y):
+    time.sleep(cyclic_reader.get_next_value()*10)
     pyautogui.moveTo(position_x, position_y, duration=cyclic_reader.get_next_value()*10)
     time.sleep(cyclic_reader.get_next_value()*10)
     pyautogui.click()
     time.sleep(cyclic_reader.get_next_value()*10)
+
+def open_menu():
+    time.sleep(cyclic_reader.get_next_value()*10)
+    my_click(35, 78)
+
 
 pyautogui.FAILSAFE = False
 
@@ -103,7 +109,7 @@ pyautogui.press('esc')
 
 my_click(32, 916)
 
-
+open_menu()
 
 exit()
 
