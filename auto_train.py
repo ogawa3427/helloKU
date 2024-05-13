@@ -98,7 +98,10 @@ pyautogui.click()
 time.sleep(1)
 
 my_click(912, 67)
+time.sleep(cyclic_reader.get_next_value()*10)
+pyautogui.press('esc')
 
+my_click(32, 916)
 
 
 
