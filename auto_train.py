@@ -57,6 +57,7 @@ def mouse_position():
 
 def my_click(position_x, position_y):
     pyautogui.moveTo(position_x, position_y, duration=cyclic_reader.get_next_value()*10)
+    time.sleep(cyclic_reader.get_next_value()*10)
     pyautogui.click()
     time.sleep(cyclic_reader.get_next_value()*10)
 
