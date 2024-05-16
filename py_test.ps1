@@ -9,9 +9,6 @@ Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://cho
 choco install python3 -y
 choco install git -y
 
-# Gitリポジトリをクローン
-git clone https://github.com/ogawa3427/helloKU
-
 # pipをアップグレード
 python -m pip install --upgrade pip
 
