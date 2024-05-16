@@ -1,6 +1,6 @@
 import requests
 import json
-import playsound
+import pyaudio
 import os
 import time
 
@@ -28,12 +28,28 @@ def synthesize_speech(text):
     with open("output.wav", "wb") as f:
         f.write(synthesis_response.content)
 
-    # playsoundを使用して音声再生
-    playsound.playsound("output.wav")
+    # pyaudioを使用して音声再生
+    CHUNK = 1024
+    wf = wave.open("output.wav", 'rb')
+    p = pyaudio.PyAudio()
+    stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
+                    channels=wf.getnchannels(),
+                    rate=wf.getframerate(),
+                    output=True)
+
+    data = wf.readframes(CHUNK)
+    while data:
+        stream.write(data)
+        data = wf.readframes(CHUNK)
+
+    stream.stop_stream()
+    stream.close()
+    p.terminate()
+    wf.close()
 
     print("音声再生が終了しました。")
 
-    #os.remove("output.wav")  # 音声ファイルを削除
+    os.remove("output.wav")  # 音声ファイルを削除
 
 # 使用例
-#synthesize_speech("こんにちは。")
+synthesize_speech("環境変数からVOICEVOXのエンドポイントとスピーカーIDを取得")
