@@ -1,4 +1,5 @@
 import text_to_speech as tts
+import gui_contr as gc
 
 tts.synthesize_speech("こんにちは。")
 
@@ -83,6 +84,7 @@ with sr.Microphone(sample_rate=16_000) as source:
         print("☎️☎️☎️AI")
         print(answer)
         source.MUTE = True
+        gc.write_comment(answer)
         tts.synthesize_speech(answer)
         source.MUTE = False
         print("🪮🛡️🛡️🛡️BACK")
