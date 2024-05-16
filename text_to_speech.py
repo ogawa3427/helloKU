@@ -2,7 +2,7 @@ import requests
 import json
 import pyaudio
 import os
-import time
+import wave
 
 # 環境変数からVOICEVOXのエンドポイントとスピーカーIDを取得
 VOICEVOX_ENDPOINT = "http://localhost:50021"
