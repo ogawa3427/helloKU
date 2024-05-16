@@ -1,6 +1,6 @@
 import requests
 import json
-import pygame  # playsoundの代わりにpygameをインポート
+import playsound
 import os
 import time
 
@@ -28,16 +28,9 @@ def synthesize_speech(text):
     with open("output.wav", "wb") as f:
         f.write(synthesis_response.content)
 
-    # pygameを使用して音声再生
-    pygame.mixer.init()
-    pygame.mixer.music.load("output.wav")
-    pygame.mixer.music.play()
-    a = 0
-    while pygame.mixer.music.get_busy():  # 再生が終了するまで待機
-        time.sleep(0.5)
-        print(a)
-        a += 1
-    time.sleep(1)
+    # playsoundを使用して音声再生
+    playsound.playsound("output.wav")
+
     print("音声再生が終了しました。")
 
     #os.remove("output.wav")  # 音声ファイルを削除
