@@ -1,6 +1,7 @@
 import pyautogui
 import time
 import random
+import pyperclip
 
 comment_pos = [31, 915]
 coment_box_pos = [160, 910]
@@ -10,7 +11,8 @@ def write_comment(comment):
     time.sleep(random.uniform(0.2, 0.5))
     pyautogui.click(coment_box_pos[0], coment_box_pos[1])
     time.sleep(random.uniform(0.2, 0.5))
-    pyautogui.write(comment, interval=0.05)
+    pyperclip.copy(comment)
+    pyautogui.hotkey("ctrl", "v")
     time.sleep(random.uniform(0.2, 0.5))
     pyautogui.press("enter")
     time.sleep(random.uniform(0.2, 0.5))
