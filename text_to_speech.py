@@ -61,9 +61,9 @@ def tester(text, speaker):
         headers={'Content-Type': 'application/json'}
     )
     audio_query_json = audio_query_response.json()
-    audio_query_json["speedScale"] = 1.2
+    audio_query_json["speedScale"] = 1.1
     #audio_query_json["pitchScale"] = 0.9
-    audio_query_json["intonationScale"] = 1.3
+    audio_query_json["intonationScale"] = 1.7
 
 
     # 音声合成
