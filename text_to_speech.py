@@ -57,7 +57,7 @@ def synthesize_speech(text):
 def tester(text, speaker):
     # クエリ作成
     audio_query_response = requests.post(
-        f"{VOICEVOX_ENDPOINT}/audio_query?text={text}&speaker={VOICEVOX_SPEAKER}",
+        f"{VOICEVOX_ENDPOINT}/audio_query?text={text}&speaker={speaker}",
         headers={'Content-Type': 'application/json'}
     )
     audio_query_json = audio_query_response.json()
@@ -65,7 +65,7 @@ def tester(text, speaker):
 
     # 音声合成
     synthesis_response = requests.post(
-        f"{VOICEVOX_ENDPOINT}/synthesis?speaker={VOICEVOX_SPEAKER}",
+        f"{VOICEVOX_ENDPOINT}/synthesis?speaker={speaker}",
         json=audio_query_json,
         headers={"accept": "audio/wav", 'Content-Type': 'application/json'}
     )
