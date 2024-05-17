@@ -19,22 +19,27 @@ def write_comment(comment):
     print("wrote👍", comment)
     pyautogui.click(comment_pos[0], comment_pos[1])
 
+emote_pos = [611, 989]
+
+
 emotes = {
-    "happy": [0,0],
-    "sad": [0,0],
-    "angry": [0,0],
-    "surprised": [0,0]
+    "qestion": [771, 641],
+    "good": [872, 347],
+    "bad": [837, 734],
+    "exc": [774, 443]
 }
 
 def expr_emote(name):
     if not name in emotes:
         print("emote not found")
         return
-    pyautogui.click(0, 0)
-    time.sleep(random.uniform(0.2, 0.5))
+    pyautogui.click(emote_pos[0], emote_pos[1])
+    time.sleep(random.uniform(0.5, 0.7))
     pyautogui.click(emotes[name][0], emotes[name][1])
-    time.sleep(random.uniform(0.2, 0.5))
-    pyautogui.click(0, 0)
+    time.sleep(random.uniform(0.5, 0.7)+2.0)
+    pyautogui.click(emote_pos[0], emote_pos[1])
+    print("emoted🤺", name)
+
 
 
 
