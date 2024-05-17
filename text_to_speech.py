@@ -52,4 +52,4 @@ def synthesize_speech(text):
     os.remove("output.wav")  # 音声ファイルを削除
 
 # 使用例
-synthesize_speech("環境変数からVOICEVOXのエンドポイントとスピーカーIDを取得")
+#synthesize_speech("環境変数からVOICEVOXのエンドポイントとスピーカーIDを取得")

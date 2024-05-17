@@ -12,7 +12,7 @@ def write_comment(comment):
     pyautogui.click(coment_box_pos[0], coment_box_pos[1])
     time.sleep(random.uniform(0.2, 0.5))
     pyperclip.copy(comment)
-    pyautogui.hotkey("ctrl", "v")
+    pyperclip.paste()
     time.sleep(random.uniform(0.2, 0.5))
     pyautogui.press("enter")
     time.sleep(random.uniform(0.2, 0.5))
