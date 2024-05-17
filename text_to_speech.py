@@ -61,7 +61,10 @@ def tester(text, speaker):
         headers={'Content-Type': 'application/json'}
     )
     audio_query_json = audio_query_response.json()
-    audio_query_json["speedScale"] = 1.1
+    audio_query_json["speedScale"] = 1.2
+    #audio_query_json["pitchScale"] = 0.9
+    audio_query_json["intonationScale"] = 1.3
+
 
     # 音声合成
     synthesis_response = requests.post(
@@ -96,3 +99,4 @@ def tester(text, speaker):
     print("音声再生が終了しました。")
 
     os.remove("output.wav")  # 音声ファイルを削除
+
