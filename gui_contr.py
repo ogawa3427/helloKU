@@ -4,7 +4,7 @@ import random
 import pyperclip
 
 comment_pos = [31, 915]
-coment_box_pos = [160, 910]
+coment_box_pos = [122, 906]
 
 def write_comment(comment):
     pyautogui.click(comment_pos[0], comment_pos[1])
