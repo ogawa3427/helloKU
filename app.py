@@ -1,8 +1,6 @@
 import text_to_speech as tts
 import gui_contr as gc
 
-tts.synthesize_speech("こんにちは。")
-
 from io import BytesIO
 
 import numpy as np
@@ -38,7 +36,6 @@ def play_audio(file_path):
     stream.close()
     p.terminate()
 
-#play_audio("1.wav")
 import speech_recognition as sr
 
 from openai import OpenAI
@@ -53,8 +50,7 @@ with sr.Microphone(sample_rate=16_000) as source:
         while True:
             try:
                 print("😍😍😍なにか話してください")
-                time.sleep(1)
-                print("😍😍😍なにか話してください22222")
+                gc.expr_emote("exc")
                 audio = r.listen(source, timeout=15)
 
                 print("音声処理中 ...")
@@ -67,7 +63,8 @@ with sr.Microphone(sample_rate=16_000) as source:
                 print("🥺🥺🥺")
                 print(result["text"])
                 if result["text"] == "":
-                    tts.synthesize_speech("もう一度")
+                    gc.expr_emote("qestion")
+                    tts.synthesize_speech("もう一度おねがいします")
                     continue 
                 prev_text = result["text"]
                 gc.expr_emote("happy")
@@ -79,7 +76,8 @@ with sr.Microphone(sample_rate=16_000) as source:
                 )
                 answer = response.choices[0].message.content
                 if not any(char in answer for char in "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん"):
-                    tts.synthesize_speech("もう一度")
+                    gc.expr_emote("qestion")
+                    tts.synthesize_speech("もう一度お願いします")     
                     print(answer)
                     continue
                 print("☎️☎️☎️AI")
@@ -93,4 +91,5 @@ with sr.Microphone(sample_rate=16_000) as source:
             except Exception as e:
                 print(f"エラーが発生しました: {e}")
                 print("最初からやり直します...")
+                gc.expr_emote("qestion")
                 continue
