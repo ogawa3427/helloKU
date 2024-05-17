@@ -10,6 +10,22 @@ def write_comment(comment):
     time.sleep(random.uniform(0.2, 0.5))
     print("wrote👍", comment)
 
+emotes = {
+    "happy": [0,0],
+    "sad": [0,0],
+    "angry": [0,0],
+    "surprised": [0,0]
+}
+
+def expr_emote(name):
+    if not name in emotes:
+        print("emote not found")
+        return
+    pyautogui.click(0, 0)
+    time.sleep(random.uniform(0.2, 0.5))
+    pyautogui.click(emotes[name][0], emotes[name][1])
+    time.sleep(random.uniform(0.2, 0.5))
+
 
 
 
