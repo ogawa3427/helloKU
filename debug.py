@@ -118,6 +118,13 @@ speakers = [
 
 text = "私は金沢大学のマスコットキャラクター候補として設定された金髪のアンドロイドです。まだ名前はありませんが、元気な女子大学生をイメージしたフレンドリーなキャラクターです。金沢大学のお知らせやキャンパスの情報など、お役に立てることがあれば何でもお聞きください！"
 
+with open("script.txt", "r") as f:
+    text = f.read()
+sentents = text.split("。")
+for sentent in sentents:
+    print(sentent)
+    tts.tester(sentent, 10)
+
 while True:
     input_text = input("type here:")
     tts.tester(text, input_text)
