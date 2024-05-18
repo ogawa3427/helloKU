@@ -44,7 +44,7 @@ def expr_emote(name):
     time.sleep(random.uniform(0.5, 0.7))
 
 def emote_question():
-    pyautogui.locateOnScreen('question.png', confidence=0.7)
+    pyautogui.locateOnScreen('question.png')#, confidence=0.7)
     
 def find_pixel_color(target_color="#1371F7"):
     screen = pyautogui.screenshot()
