@@ -10,6 +10,7 @@ VOICEVOX_SPEAKER = "2"
 
 def synthesize_speech(text):
     print("🔈音声合成を開始します。")
+    print("🔉テキスト: ", text)
     # クエリ作成
     audio_query_response = requests.post(
         f"{VOICEVOX_ENDPOINT}/audio_query?text={text}&speaker={VOICEVOX_SPEAKER}",
