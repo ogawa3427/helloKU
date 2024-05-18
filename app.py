@@ -36,7 +36,8 @@ with sr.Microphone(sample_rate=16_000) as source:
             if emote_flag:
                 pass
             else:
-                gc.expr_emote("exc")
+                #gc.expr_emote("exc")
+                gc.emote_sorena()
                 gc.write_comment("👂👂👂なにか話してください")
             audio = r.listen(source, timeout=15)
 
@@ -54,12 +55,15 @@ with sr.Microphone(sample_rate=16_000) as source:
                 if emote_flag:
                     pass
                 else:
-                    gc.expr_emote("qestion")
+                    gc.emote_question()
+                    gc.write_comment("👂:もう一度おねがいします")
+                    #gc.expr_emote("qestion")
             else:          
                 if emote_flag:
                     pass
                 else:
-                    gc.expr_emote("happy")
+                    #gc.expr_emote("happy")
+                    gc.emote_question()
                     gc.write_comment("👂:もう一度おねがいします")
                     tts.synthesize_speech("もう一度おねがいします")
                     continue
@@ -67,7 +71,8 @@ with sr.Microphone(sample_rate=16_000) as source:
             if emote_flag:
                 pass
             else:
-                gc.expr_emote("happy")
+                #gc.expr_emote("happy")
+                pass
             print("🚛reqを構成します")
             gc.write_comment("🚛reqを構成します")
             prompt = result["text"]
@@ -124,8 +129,9 @@ with sr.Microphone(sample_rate=16_000) as source:
                 if emote_flag:
                     pass
                 else:
-                    gc.expr_emote("qestion")
-                gc.write_comment("👂もう一度お願いします")
+                    #gc.expr_emote("qestion")
+                    gc.emote_question()
+                gc.write_comment("☎️もう一度お願いします")
                 tts.synthesize_speech("もう一度お願いします")
                 print("返答に日本語が含まれませんでした")
                 print(answer)
