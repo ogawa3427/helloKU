@@ -57,6 +57,7 @@ with sr.Microphone(sample_rate=16_000) as source:
                 pass
             else:
                 gc.expr_emote("happy")
+            print("🚛reqを構成します")
             prompt = result["text"]
             response = aiclient.chat.completions.create(
                 model="gpt-3.5-turbo",
@@ -99,6 +100,7 @@ with sr.Microphone(sample_rate=16_000) as source:
                             }
                         ]
             )
+            print("🚛reqを受信しました")
 
             answer = response.choices[0].message.content
             if not any(char in answer for char in "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん"):
