@@ -46,3 +46,16 @@ def expr_emote(name):
 def emote_question():
     pyautogui.click("question.png")
 
+def find_pixel_color(target_color="#1371F7"):
+    screen = pyautogui.screenshot()
+    width, height = screen.size
+
+    for x in range(width):
+        for y in range(height):
+            if screen.getpixel((x, y)) == pyautogui.hexToRGB(target_color):
+                print(f"Found target color at: ({x}, {y})")
+                return (x, y)
+    print("Target color not found")
+    return None
+
+find_pixel_color()
