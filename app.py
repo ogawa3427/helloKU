@@ -18,6 +18,11 @@ aiclient = OpenAI()
 openai.api_key = os.getenv('OPENAI_API_KEY')
 import whisper
 
+if args[1] == "-n" or args[1] == "--no-emote":
+    emote_flag = True
+else:
+    emote_flag = False
+
 
 model = whisper.load_model("base")
 r = sr.Recognizer()
@@ -25,7 +30,7 @@ with sr.Microphone(sample_rate=16_000) as source:
     while True:
         try:
             print("👂なにか話してください")
-            if args[1] == "-n" or args[1] == "--no-emote":
+            if emote_flag:
                 pass
             else:
                 gc.expr_emote("exc")
@@ -41,19 +46,19 @@ with sr.Microphone(sample_rate=16_000) as source:
 
             print("👂: ", result["text"])
             if result["text"] == "":
-                if args[1] == "-n" or args[1] == "--no-emote":
+                if emote_flag:
                     pass
                 else:
                     gc.expr_emote("qestion")
             else:          
-                if args[1] == "-n" or args[1] == "--no-emote":
+                if emote_flag:
                     pass
                 else:
                     gc.expr_emote("happy")      
                     tts.synthesize_speech("もう一度おねがいします")
-                    continue 
+                    continue -
             prev_text = result["text"]
-            if args[1] == "-n" or args[1] == "--no-emote":
+            if emote_flag:
                 pass
             else:
                 gc.expr_emote("happy")
@@ -104,7 +109,7 @@ with sr.Microphone(sample_rate=16_000) as source:
 
             answer = response.choices[0].message.content
             if not any(char in answer for char in "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん"):
-                if args[1] == "-n" or args[1] == "--no-emote":
+                if emote_flag:
                     pass
                 else:
                     gc.expr_emote("qestion")
@@ -114,7 +119,7 @@ with sr.Microphone(sample_rate=16_000) as source:
 
             print("☎️AI: ", answer)
             source.MUTE = True
-            if args[1] == "-n" or args[1] == "--no-emote":
+            if emote_flag:
                 pass
             else:
                 gc.write_comment(answer)
@@ -125,7 +130,7 @@ with sr.Microphone(sample_rate=16_000) as source:
         except Exception as e:
             print(f"😇エラーが発生しました: {e}")
             print("😇最初からやり直します...")
-            if args[1] == "-n" or args[1] == "--no-emote":
+            if emote_flag:
                 pass
             else:
                 gc.expr_emote("qestion")
