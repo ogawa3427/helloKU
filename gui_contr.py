@@ -43,19 +43,28 @@ def expr_emote(name):
     # print("emoted🤺", name)
     time.sleep(random.uniform(0.5, 0.7))
 
+QUESTION_EMOTE = [771, 656]
 def emote_question():
-    pyautogui.locateOnScreen('question.png')#, confidence=0.7)
-    
-def find_pixel_color(target_color="#1371F7"):
-    screen = pyautogui.screenshot()
-    width, height = screen.size
+    time.sleep(random.uniform(0.5, 0.7))
+    pyautogui.click(QUESTION_EMOTE[0], QUESTION_EMOTE[1])
 
-    for x in range(width):
-        for y in range(height):
-            if screen.getpixel((x, y)) == pyautogui.hexToRGB(target_color):
-                print(f"Found target color at: ({x}, {y})")
-                return (x, y)
-    print("Target color not found")
-    return None
+SORENA_EMOTE = [771, 754]
+def emote_sorena():
+    time.sleep(random.uniform(0.5, 0.7))
+    pyautogui.click(SORENA_EMOTE[0], SORENA_EMOTE[1])
+    
+UTATANE_EMOTE = [867, 457]
+def emote_utatane():
+    time.sleep(random.uniform(0.5, 0.7))
+    pyautogui.click(UTATANE_EMOTE[0], UTATANE_EMOTE[1])
+
 
 emote_question()
+
+time.sleep(1)
+
+emote_utatane()
+
+time.sleep(1)
+
+emote_sorena()
