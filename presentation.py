@@ -29,8 +29,8 @@ print("Waiting for the presentation to start...")
 print("The next file is 1")
 
 while True:
-    input = input("Play 1? (y/n): ")
-    if input == "y":
+    input_val = input("Play 1? (y/n): ")
+    if input_val == "y":
         break
 
 print("Playing slide 1...")
@@ -38,8 +38,8 @@ print("The next file is 2")
 play_sound("slide1_voice.wav")
 
 while True:
-    input = input("Play 2? (y/n): ")
-    if input == "y":
+    input_val = input("Play 2? (y/n): ")
+    if input_val == "y":
         break
     
 print("Playing slide 2...")
@@ -47,8 +47,8 @@ print("The next file is 3")
 play_sound("slide2_voice.wav")
 
 while True:
-    input = input("Play 3? (y/n): ")
-    if input == "y":
+    input_val = input("Play 3? (y/n): ")
+    if input_val == "y":
         break
     
 print("Playing slide 3...")
@@ -56,8 +56,8 @@ print("The next file is 4")
 play_sound("slide3_voice.wav")
 
 while True:
-    input = input("Play 4? (y/n): ")
-    if input == "y":
+    input_val = input("Play 4? (y/n): ")
+    if input_val == "y":
         break
     
 print("Playing slide 4...")
@@ -65,8 +65,8 @@ print("The next file is 5")
 play_sound("slide4_voice.wav")
 
 while True:
-    input = input("Play 5? (y/n): ")
-    if input == "y":
+    input_val = input("Play 5? (y/n): ")
+    if input_val == "y":
         break
     
 print("Playing slide 5...")
@@ -74,8 +74,8 @@ print("The next file is 6")
 play_sound("slide5_voice.wav")
 
 while True:
-    input = input("Play 6? (y/n): ")
-    if input == "y":
+    input_val = input("Play 6? (y/n): ")
+    if input_val == "y":
         break
     
 print("Playing slide 6...")
@@ -83,8 +83,8 @@ print("The next file is 7")
 play_sound("slide6_voice.wav")
 
 while True:
-    input = input("Play 7? (y/n): ")
-    if input == "y":
+    input_val = input("Play 7? (y/n): ")
+    if input_val == "y":
         break
     
 print("Playing slide 7...")
