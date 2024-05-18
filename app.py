@@ -7,6 +7,8 @@ import soundfile as sf
 import openai
 #import json
 import os
+import sys
+args = sys.argv
 import time
 import requests
 prev_text = ""
@@ -20,11 +22,13 @@ import whisper
 model = whisper.load_model("base")
 r = sr.Recognizer()
 with sr.Microphone(sample_rate=16_000) as source:
-        
     while True:
         try:
             print("👂なにか話してください")
-            gc.expr_emote("exc")
+            if args[1] == "-n" or args[1] == "--no-emote":
+                pass
+            else:
+                gc.expr_emote("exc")
             audio = r.listen(source, timeout=15)
 
             print("👂音声処理中 ...")
@@ -37,11 +41,22 @@ with sr.Microphone(sample_rate=16_000) as source:
 
             print("👂: ", result["text"])
             if result["text"] == "":
-                gc.expr_emote("qestion")
+                if args[1] == "-n" or args[1] == "--no-emote":
+                    pass
+                else:
+                    gc.expr_emote("qestion")
+            else:          
+                if args[1] == "-n" or args[1] == "--no-emote":
+                    pass
+                else:
+                    gc.expr_emote("happy")      
                 tts.synthesize_speech("もう一度おねがいします")
                 continue 
             prev_text = result["text"]
-            gc.expr_emote("happy")
+            if args[1] == "-n" or args[1] == "--no-emote":
+                pass
+            else:
+                gc.expr_emote("happy")
             prompt = result["text"]
             response = aiclient.chat.completions.create(
                 model="gpt-3.5-turbo",
@@ -87,14 +102,20 @@ with sr.Microphone(sample_rate=16_000) as source:
 
             answer = response.choices[0].message.content
             if not any(char in answer for char in "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん"):
-                gc.expr_emote("qestion")
+                if args[1] == "-n" or args[1] == "--no-emote":
+                    pass
+                else:
+                    gc.expr_emote("qestion")
                 tts.synthesize_speech("もう一度お願いします")
                 print(answer)
                 continue
 
             print("☎️AI: ", answer)
             source.MUTE = True
-            gc.write_comment(answer)
+            if args[1] == "-n" or args[1] == "--no-emote":
+                pass
+            else:
+                gc.write_comment(answer)
             tts.synthesize_speech(answer)
             source.MUTE = False
             print("🛡️LOOP BACK")
@@ -102,5 +123,8 @@ with sr.Microphone(sample_rate=16_000) as source:
         except Exception as e:
             print(f"😇エラーが発生しました: {e}")
             print("😇最初からやり直します...")
-            gc.expr_emote("qestion")
+            if args[1] == "-n" or args[1] == "--no-emote":
+                pass
+            else:
+                gc.expr_emote("qestion")
             continue
