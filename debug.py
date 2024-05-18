@@ -6,6 +6,7 @@ import time
 
 #gc.write_comment("取得可能なドメイン名は、検索からそのまま申し込むことができます。")
 
+gc.emote_question()
 #gc.expr_emote("qestion")
 speakers = [
     {

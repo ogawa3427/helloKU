@@ -125,8 +125,9 @@ with sr.Microphone(sample_rate=16_000) as source:
                     pass
                 else:
                     gc.expr_emote("qestion")
-                    gc.write_comment("👂もう一度お願いします")
+                gc.write_comment("👂もう一度お願いします")
                 tts.synthesize_speech("もう一度お願いします")
+                print("返答に日本語が含まれませんでした")
                 print(answer)
                 continue
 

@@ -43,4 +43,6 @@ def expr_emote(name):
     # print("emoted🤺", name)
     time.sleep(random.uniform(0.5, 0.7))
 
+def emote_question():
+    pyautogui.click("question.png")
 
