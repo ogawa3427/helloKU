@@ -18,8 +18,11 @@ aiclient = OpenAI()
 openai.api_key = os.getenv('OPENAI_API_KEY')
 import whisper
 
-if args[1] == "-n" or args[1] == "--no-emote":
-    emote_flag = True
+if len(args) > 1:
+    if args[1] == "-n" or args[1] == "--no-emote":
+        emote_flag = True
+    else:
+        emote_flag = False
 else:
     emote_flag = False
 
