@@ -34,11 +34,13 @@ def expr_emote(name):
     if not name in emotes:
         print("emote not found")
         return
+    # time.sleep(random.uniform(0.5, 0.7))
+    # pyautogui.click(emote_pos[0], emote_pos[1])
+    # time.sleep(random.uniform(0.5, 0.7))
+    # pyautogui.click(emotes[name][0], emotes[name][1])
+    # time.sleep(random.uniform(0.5, 0.7)+2.0)
+    # pyautogui.click(emote_pos[0], emote_pos[1])
+    # print("emoted🤺", name)
     time.sleep(random.uniform(0.5, 0.7))
-    pyautogui.click(emote_pos[0], emote_pos[1])
-    time.sleep(random.uniform(0.5, 0.7))
-    pyautogui.click(emotes[name][0], emotes[name][1])
-    time.sleep(random.uniform(0.5, 0.7)+2.0)
-    pyautogui.click(emote_pos[0], emote_pos[1])
-    print("emoted🤺", name)
+
 

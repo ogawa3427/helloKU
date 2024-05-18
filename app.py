@@ -37,9 +37,11 @@ with sr.Microphone(sample_rate=16_000) as source:
                 pass
             else:
                 gc.expr_emote("exc")
+                gc.write_comment("👂👂👂なにか話してください")
             audio = r.listen(source, timeout=15)
 
             print("👂音声処理中 ...")
+            gc.write_comment("👂音声処理中 ...")
             wav_bytes = audio.get_wav_data()
             wav_stream = BytesIO(wav_bytes)
             audio_array, sampling_rate = sf.read(wav_stream)
@@ -57,7 +59,8 @@ with sr.Microphone(sample_rate=16_000) as source:
                 if emote_flag:
                     pass
                 else:
-                    gc.expr_emote("happy")      
+                    gc.expr_emote("happy")
+                    gc.write_comment("👂:もう一度おねがいします")
                     tts.synthesize_speech("もう一度おねがいします")
                     continue
             prev_text = result["text"]
@@ -66,6 +69,7 @@ with sr.Microphone(sample_rate=16_000) as source:
             else:
                 gc.expr_emote("happy")
             print("🚛reqを構成します")
+            gc.write_comment("🚛reqを構成します")
             prompt = result["text"]
             response = aiclient.chat.completions.create(
                 model="gpt-3.5-turbo",
@@ -109,6 +113,7 @@ with sr.Microphone(sample_rate=16_000) as source:
                         ]
             )
             print("🚛reqを受信しました")
+            gc.write_comment("🚛reqを受信しました")
 
             answer = response.choices[0].message.content
             if not any(char in answer for char in "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん"):
@@ -116,6 +121,7 @@ with sr.Microphone(sample_rate=16_000) as source:
                     pass
                 else:
                     gc.expr_emote("qestion")
+                    gc.write_comment("👂もう一度お願いします")
                 tts.synthesize_speech("もう一度お願いします")
                 print(answer)
                 continue
@@ -133,6 +139,7 @@ with sr.Microphone(sample_rate=16_000) as source:
         except Exception as e:
             print(f"😇エラーが発生しました: {e}")
             print("😇最初からやり直します...")
+            gc.write_comment("😇最初からやり直します...")
             if emote_flag:
                 pass
             else:
