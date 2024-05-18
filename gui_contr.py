@@ -43,7 +43,7 @@ def expr_emote(name):
     # print("emoted🤺", name)
     time.sleep(random.uniform(0.5, 0.7))
 
-QUESTION_EMOTE = [771, 656]
+QUESTION_EMOTE = [771, 956]
 def emote_question():
     time.sleep(random.uniform(0.5, 0.7))
     pyautogui.click(QUESTION_EMOTE[0], QUESTION_EMOTE[1])
@@ -61,10 +61,12 @@ def emote_utatane():
 
 emote_question()
 
-time.sleep(1)
+time.sleep(10)
+print("emoted🤺", "question")
 
 emote_utatane()
 
-time.sleep(1)
+time.sleep(10)
+print("emoted🤺", "utatane")
 
 emote_sorena()
