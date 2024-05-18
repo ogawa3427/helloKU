@@ -1,5 +1,5 @@
 import requests
-import json
+#import json
 import pyaudio
 import os
 import wave
@@ -9,6 +9,7 @@ VOICEVOX_ENDPOINT = "http://localhost:50021"
 VOICEVOX_SPEAKER = "2"
 
 def synthesize_speech(text):
+    print("🔈音声合成を開始します。")
     # クエリ作成
     audio_query_response = requests.post(
         f"{VOICEVOX_ENDPOINT}/audio_query?text={text}&speaker={VOICEVOX_SPEAKER}",
@@ -16,7 +17,10 @@ def synthesize_speech(text):
     )
     audio_query_json = audio_query_response.json()
     audio_query_json["speedScale"] = 1.1
+    audio_query_json["intonationScale"] = 1.0
+    #audio_query_json["pitchScale"] = 0.9
 
+    print("🔉合成reqを送信しました")
     # 音声合成
     synthesis_response = requests.post(
         f"{VOICEVOX_ENDPOINT}/synthesis?speaker={VOICEVOX_SPEAKER}",
@@ -27,6 +31,7 @@ def synthesize_speech(text):
     # 音声ファイルとして保存
     with open("output.wav", "wb") as f:
         f.write(synthesis_response.content)
+    print("🔊音声ファイルを保存しました。")
 
     # pyaudioを使用して音声再生
     CHUNK = 1024
@@ -47,7 +52,7 @@ def synthesize_speech(text):
     p.terminate()
     wf.close()
 
-    print("音声再生が終了しました。")
+    print("🔇音声再生が終了しました")
 
     os.remove("output.wav")  # 音声ファイルを削除
 

@@ -2,66 +2,39 @@ import text_to_speech as tts
 import gui_contr as gc
 
 from io import BytesIO
-
 import numpy as np
 import soundfile as sf
-
 import openai
-import json
+#import json
 import os
 import time
-
 import requests
-
 prev_text = ""
-
-import pyaudio
-
-def play_audio(file_path):
-    # 音声ファイルを読み込む
-    data, samplerate = sf.read(file_path)
-    
-    # PyAudioの設定をステレオと16ビット整数形式に変更
-    p = pyaudio.PyAudio()
-    stream = p.open(format=pyaudio.paInt16,
-                    channels=2,
-                    rate=samplerate,
-                    output=True)
-    
-    # 音声の再生
-    stream.write(data.tobytes())
-    
-    # ストリームを閉じる
-    stream.stop_stream()
-    stream.close()
-    p.terminate()
-
 import speech_recognition as sr
-
 from openai import OpenAI
 aiclient = OpenAI()
 openai.api_key = os.getenv('OPENAI_API_KEY')
-
-
 import whisper
+
+
 model = whisper.load_model("base")
 r = sr.Recognizer()
 with sr.Microphone(sample_rate=16_000) as source:
         while True:
             try:
-                print("😍😍😍なにか話してください")
+                print("👂なにか話してください")
                 gc.expr_emote("exc")
                 audio = r.listen(source, timeout=15)
 
-                print("音声処理中 ...")
+                print("👂音声処理中 ...")
                 wav_bytes = audio.get_wav_data()
                 wav_stream = BytesIO(wav_bytes)
                 audio_array, sampling_rate = sf.read(wav_stream)
                 audio_fp32 = audio_array.astype(np.float32)
 
                 result = model.transcribe(audio_fp32, fp16=False)
-                print("🥺🥺🥺")
-                print(result["text"])
+
+                print("👂: ", result["text"])
                 if result["text"] == "":
                     gc.expr_emote("qestion")
                     tts.synthesize_speech("もう一度おねがいします")
@@ -110,22 +83,23 @@ with sr.Microphone(sample_rate=16_000) as source:
                                 }
                             ]
                 )
+
                 answer = response.choices[0].message.content
                 if not any(char in answer for char in "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん"):
                     gc.expr_emote("qestion")
-                    tts.synthesize_speech("もう一度お願いします")     
+                    tts.synthesize_speech("もう一度お願いします")
                     print(answer)
                     continue
-                print("☎️☎️☎️AI")
-                print(answer)
+
+                print("☎️AI: ", answer)
                 source.MUTE = True
                 gc.write_comment(answer)
                 tts.synthesize_speech(answer)
                 source.MUTE = False
-                print("🪮🛡️🛡️🛡️BACK")
+                print("🛡️LOOP BACK")
                 time.sleep(0.2)
             except Exception as e:
-                print(f"エラーが発生しました: {e}")
-                print("最初からやり直します...")
+                print(f"😇エラーが発生しました: {e}")
+                print("😇最初からやり直します...")
                 gc.expr_emote("qestion")
                 continue
