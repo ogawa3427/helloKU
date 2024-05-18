@@ -56,7 +56,7 @@ with sr.Microphone(sample_rate=16_000) as source:
                 else:
                     gc.expr_emote("happy")      
                     tts.synthesize_speech("もう一度おねがいします")
-                    continue -
+                    continue
             prev_text = result["text"]
             if emote_flag:
                 pass
